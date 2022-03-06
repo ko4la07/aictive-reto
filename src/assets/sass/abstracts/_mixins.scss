@@ -1,0 +1,91 @@
+@import "bootstrap/scss/mixins";
+
+$custom-spacers:(
+  5:$spacer*1.375,
+  6:$spacer*1.875,
+  7:$spacer*2.25,
+  8:$spacer*3,
+  13:$spacer*7.875,
+  14:$spacer*9.5,
+  15:$spacer*13.05,
+);
+
+$spacers:map-merge($spacers,$custom-spacers);
+
+
+@import "bootstrap/scss/utilities";
+
+$utilities: map-merge(
+  $utilities, (
+    "custom-font": (
+        rfs: false,
+        responsive: true,
+        property: font-size,
+        class: custom-font,
+        values: (
+          1: $font-size-base * 1.375,
+        )
+      )
+    ),
+  );
+  $utilities: map-merge(
+  $utilities, (
+    "position": map-merge(
+      map-get($utilities, "position"),
+      ( responsive: true ),
+    ),
+  )
+);
+
+$utilities: map-merge(
+  $utilities, (
+    "translate-middle": map-merge(
+      map-get($utilities, "translate-middle"),
+      ( responsive: true ),
+    ),
+  )
+);
+
+
+  $utilities: map-merge(
+  $utilities, (
+    "font-size": map-merge(
+      map-get($utilities, "font-size"),
+      ( responsive: true ),
+    ),
+  )
+);
+
+$utilities: map-merge(
+  $utilities, (
+    "font-weight": map-merge(
+      map-get($utilities, "font-weight"),
+      ( responsive: true ),
+    ),
+  )
+);
+
+$utilities: map-merge(
+  $utilities, (
+    "width": map-merge(
+      map-get($utilities, "width"),
+      ( responsive: true ),
+    ),
+  )
+);
+$utilities: map-merge(
+  $utilities, (
+    "viewport-width": map-merge(
+      map-get($utilities, "viewport-width"),
+      ( values:(
+        10:10vw,
+        65:65vw,
+        75:75vw
+      ) ),
+    ),
+  )
+);
+
+
+@import "bootstrap/scss/root";
+
