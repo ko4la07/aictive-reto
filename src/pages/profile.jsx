@@ -5,12 +5,18 @@ import atrasIcon from '../assets/img/atras-icon.svg'
 
 const Profile = () => {
   const [control, setControl] = useState(true);
+  const [newPassword, setNewPassword] = useState('');
 
   const handleControl = () => {
     setControl(!control);
   }
   const handleBack = () => {
     setControl(!control);
+  }
+
+  const handleStrongPassword = (element) => {
+    const regex = /^(?=^.{10,}$)(?=.*[\u0021-\u002b\u003c-\u0040])((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/g;
+      return element.match(regex);
   }
 
   return (
@@ -36,7 +42,7 @@ const Profile = () => {
                 <p className="m-0 text-primary font-sm text-decoration-underline">Quitar foto</p>
               </div>
             </Col>
-            <Col className="profile-col p-3 position-relative" style={control ? { width: 399 + 'px', minHeight: 474 + 'px' } : { width: 399 + 'px', minHeight: 520 + 'px' }}>
+            <Col className="profile-col p-3 position-relative" style={control ? { width: 399 + 'px', minHeight: 474 + 'px' } : { width: 399 + 'px', minHeight: 550 + 'px' }}>
               <Form>
                 <Form.Group className="mb-1 d-flex align-items-center" controlId="formBasicNombre" style={control ? { columnGap: 2 + 'rem' } : { columnGap: 1.2 + 'rem' }}>
                   <Form.Label className="m-0 font-sm text-secondary">Nombre</Form.Label>
@@ -90,8 +96,17 @@ const Profile = () => {
                     </Form.Group>
                     <Form.Group className="mb-1 d-flex align-items-center" controlId="formBasicContraseñaNueva" style={control ? { columnGap: 2 + 'rem' } : { columnGap: 1.2 + 'rem' }}>
                       <Form.Label className="m-0 font-sm text-secondary">Nueva contraseña</Form.Label>
-                      <Form.Control type="password" placeholder="********" className="py-2 px-3 font-sm text-secondary" />
+                      <Form.Control type="password" placeholder="********" className="py-2 px-3 font-sm text-secondary" onChange={event => setNewPassword(event.target.value)} />
                     </Form.Group>
+                    {
+                      (newPassword.length > 0 && !handleStrongPassword(newPassword))
+                      ?
+                      <Form.Text>
+                        <p className="text-danger custom-font-2 mb-0">La contraseña debe de tener mínimo 10 caracteres, alfanumérico, al menos una mayuscula y un símbolo.</p>
+                      </Form.Text>
+                      :
+                      <></>
+                    }
                     <Form.Group className="mb-1 d-flex align-items-center" controlId="formBasicContraseñaNuevaRep" style={control ? { columnGap: 2 + 'rem' } : { columnGap: 1.2 + 'rem' }}>
                       <Form.Label className="m-0 font-sm text-secondary">Repetir nueva contraseña</Form.Label>
                       <Form.Control type="password" placeholder="********" className="py-2 px-3 font-sm text-secondary" />

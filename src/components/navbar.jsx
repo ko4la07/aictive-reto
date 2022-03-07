@@ -25,22 +25,22 @@ const NavBar = () => {
           <Col className={`h-100 big-column ${show}`}>
             <Container className="ps-3">
               <Nav className="me-auto flex-column text-secondary">
-                <Link to="/" className="py-3 py-xxl-4">
+                <Link to="/" className="py-3 py-xxl-4 ps-3">
                   Inicio
                 </Link>
-                <Link to="/profile" className="py-3 py-xxl-4">
+                <Link to="/profile" className="py-3 py-xxl-4 ps-3">
                   Mi cuenta
                 </Link>
-                <Link to="/settings" className="py-3 py-xxl-4">
+                <Link to="/settings" className="py-3 py-xxl-4 ps-3">
                   Ajustes
                 </Link>
-                <Link to="/apps" className="py-3 py-xxl-4">
+                <Link to="/apps" className="py-3 py-xxl-4 ps-3">
                   Aplicaciones
                 </Link>
-                <Link to="/support" className="py-3 py-xxl-4">
+                <Link to="/support" className="py-3 py-xxl-4 ps-3">
                   Soporte
                 </Link>
-                <Link to="/" className="py-3 py-xxl-4 mt-md-8 mt-xxl-15">
+                <Link to="/" className="py-3 py-xxl-4 mt-md-8 mt-xxl-15 ps-3">
                   Cerrar Sesión
                 </Link>
               </Nav>
